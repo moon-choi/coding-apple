@@ -1,0 +1,23 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+<script>
+
+var promise = new Promise(function(resolve, reject) {
+  var img = document.querySelector('#test');
+  img.addEventListner('load', function(){ 
+  resolve();
+  });
+  img.addEventListner('error', function(){ 
+  reject();
+  });  
+})
+  
+promise.then(function() {
+ console.log('loaded!')
+}).catch(function() {
+console.log('failed!')
+})
+
+</script>

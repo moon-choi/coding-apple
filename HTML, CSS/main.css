@@ -1,0 +1,40 @@
+.container {
+  width: 800px;
+  margin: auto;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+} 
+.blog-content {
+  width: 80%;
+  height: 200px;
+  background: lightgrey;
+  float: left;
+}
+
+.blog-img {
+  width: 20%;
+  height: 200px;
+  background: yellow;
+  float: left;
+}
+
+.blog-profile {
+  width: 50px;
+  display: block;
+  float: left;
+}
+
+.blog-name {
+  float: left;
+}
+
+.navbar li {
+  display: inline-block;
+  background: pink;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.navbar a {
+  font-size: 16px;
+  text-decoration: none;
+}

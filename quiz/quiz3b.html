@@ -1,0 +1,25 @@
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
+
+<img id="test" src="https://codingapple1.github.io/kona.jpg">
+
+<script>
+  var promise = ajaxDoer('https://codingapple1.github.io/hello.txt')
+
+
+  promise.then(function(result) {
+    console.log(result)
+    return ajaxDoer('https://codingapple1.github.io/hello2.txt')
+  }).then(function(result) {  
+    console.log(result)
+  })
+
+//반복돼는 부분 함수로 만들고 url 다른 부분은 구멍뚫어서 파라미터로 넣어주기.
+  function ajaxDoer(url) {
+  return new Promise((resolve, reject) => {
+    $.get(url)
+    .done(function(result){
+      resolve(result)
+    });
+  });  
+}
+</script>

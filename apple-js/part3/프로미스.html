@@ -1,0 +1,19 @@
+<script>
+  var myPromise = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    resolve() //1초 후에 성공을 판정해주는 프로미스. 
+  }, 2000)
+});
+
+
+myPromise.then(function() { 
+  console.log('success!') 
+}).catch(function() {
+  console.log('fail!')
+})
+
+//프로미스의 세가지 상태
+// 1. resolved 성공했을 때
+// 2. pending 판정 대기중일 때 (프로미스 바디 안에 아무것도 없을 때 )
+// 3. rejected 실패
+</script>

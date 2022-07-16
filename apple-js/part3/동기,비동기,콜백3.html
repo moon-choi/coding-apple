@@ -1,0 +1,17 @@
+<script>
+async function add(){
+  var promise = new Promise(function(resolve, reject){
+    var calc = 1 + 1;
+    reject(100)
+  })
+
+ // try {} 해보고 안돼면 catch {}를 실행해주세요.
+    try {
+    var result = await promise;
+    console.log(result)
+  } catch {
+    console.log('프로미스 연산 실패')
+  }
+}
+add();
+</script>

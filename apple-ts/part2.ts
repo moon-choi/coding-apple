@@ -1,0 +1,212 @@
+// ...  SPREAD / REST
+
+// 1. 괄호벗겨주는 ...spread는 array, object 자료 왼쪽에,
+// 2. 여러개의 파라미터를 의미하는 ...rest는 함수선언할 때 소괄호 안에 출몰합니다. 
+
+// rest param
+// 함수 파라미터 작명할 때 점3개 붙여주면 여기엔 파라미터 잔뜩 들어올 수 있습니다~라고 정의가 가능합니다. 
+// rest 파라미터는 다른 일반 파라미터 뒤에만 올 수 있습니다. 
+// rest 파라미터자리에 집어넣은 값들은 전부 [ ] 안에 담겨있습니다. 출력해보시면 진짜임 
+
+function 전부더하기(...a: number[]) {
+  console.log(a)
+}
+
+전부더하기(1, 2, 3, 4, 5)
+
+
+//Destrucrturing
+
+let person5 = { student: true, age: 20 }
+
+function 함수5({ student, age }: { student: boolean, age: number }) {
+  console.log(student, age)
+}
+
+함수5({ student: true, age: 20 })
+
+//
+
+function maxNum(...arr: number[]) {
+
+  let result = 0;
+  arr.forEach((i) => {
+    if (result < i) {
+      result = i
+    }
+  })
+  return result;
+}
+
+// object destructuring 
+
+type UserType = { user: string, comment: number[], admin: boolean }
+function 함수6({ user, comment, admin }: UserType): void {
+  console.log(user, comment, admin)
+} //void means no return value
+
+함수6({ user: 'kim', comment: [3, 5, 4], admin: false })
+
+// array destructuring 
+
+type ArrayType = (string | number | boolean)[]
+function 함수7([a, b, c]: ArrayType): void {
+  console.log(a, b, c)
+}
+함수7([40, 'wine', false])
+
+//
+// literal type? 
+
+// && 기호로 비교할 때 true와 false를 넣는게 아니라 자료형을 넣으면
+
+// && 사이에서 처음 등장하는 falsy 값을 찾아주고 그게 아니면 마지막 값을 남겨줍니다.
+
+// falsy 값은 false와 유사한 기능을 하는 null, undefined, NaN 이런 값들을 의미합니다.
+
+1 && null && 3   // null이 남음
+undefined && '안녕' && 100  // undefined 남음
+
+if (변수 && typeof strs === "string") { }
+
+// 이렇게 사용하면 변수가 undefined라면 undefined가 남아서 if문이 실행되지 않고,
+
+// (if문 조건식안에 falsy 값이 남으면 if문 실행되지 않습니다)
+
+// 변수가 string 타입이면 if문이 실행됩니다.
+
+// 변수가 null, undefined인 경우를 쉽게 거를 수 있는 문법이라고 보면 되겠습니다. 
+
+// 참고로 if (변수 != null) 이렇게 조건식을 써도 null, undefined 이거 두 개를 동시에 거를 수 있습니다. 
+
+type Fish = { swim: string };
+type Bird = { fly: string };
+function 함수(animal: Fish | Bird) {
+  if ("swim" in animal) {
+    return animal.swim
+  }
+  return animal.fly
+}
+
+let 날짜 = new Date();
+if (날짜 instanceof Date) {
+  console.log('참이에요')
+}
+
+type Car2 = {
+  wheel: '4개',
+  color: string
+}
+type Bike = {
+  wheel: '2개',
+  color: string
+}
+
+function 함수(x: Car2 | Bike) {
+  if (x.wheel === '4개') {
+    console.log('the car is ' + x.color)
+  } else {
+    console.log('the bike is ' + x.color)
+  }
+}
+
+// never type
+// void 로 대체 가능
+// 그래서 1. 무언가 return 하지 않고 
+// 2. 끝나지도 않는 함수를 표현하고 싶을 때 never 타입을 지정하면 되는데 
+// 2번 조건의 함수를 만들 일이 거의 없기 때문에 never 타입은 쓸 일이 없습니다. 
+
+//잘못된 narrowing을 사용했을 때 파라미터의 타입이 never로 변합니다. 파라미터에 마우스 올려보셈
+
+// 이런 건 있을 수 없다, 일어나면 안된다고 알려주는 느낌입니다. 
+
+// 그럴 때 never를 구경할 수 있으니 never 타입이 발견되는 경우 코드를 수정하는게 어떨까요. 
+
+//
+
+class User {
+  public name: string;
+  private familyName: string;
+
+  constructor() {
+    this.name = 'kim';
+    let hello = this.familyName + '안뇽';
+  }
+  changeSecret() {
+    this.familyName = 'park';
+  }
+}
+
+let 유저1 = new User();
+// 유저1.familyName = 'park';  //에러남
+유저1.changeSecret()        //가능
+
+// 두개의 코드는 같은 역할을 하는 코드입니다.
+// "constructor 파라미터에 public 붙이면 this.name = name 이거 생략가능하다" 
+
+class Person1 {
+  name;
+  constructor(name: string) {
+    this.name = name;
+  }
+}
+let 사람1 = new Person1('john')
+
+
+class Person2 {
+  constructor(public name: string) {
+
+  }
+}
+let 사람2 = new Person2('john')
+
+//
+// class는 복사할 수 있습니다. 
+
+// extends라는 문법 쓰면 다른 class 만들 때 기존 class에 있던걸 전부 복사붙여넣기 가능합니다. 
+
+class NewUser extends User {
+  'blah'
+}
+
+// protected를 달아놓으면 1. private 이거랑 똑같은데 2. extends 된 class 안에서도 사용가능하게 약간 보안을 풀어줍니다. 
+
+class User2 {
+  static x = 10;
+  y = 20;
+}
+
+let jim = new User2();
+// jim.x //불가능
+User2.x //가능
+
+//
+
+class User3 {
+  private static x = 10; //only inside class, not extendable to instances
+  public static y = 20; //accessible outside class, not extandable to instances
+  protected z = 30; //accessible outside class, extendable to instances
+}
+
+//
+class User4 {
+  private static x = 10;
+  public static y = 20;
+
+  static addOne(z: number) {
+    User4.x += z
+  }
+
+  static printX() {
+    console.log(User4.x)
+  }
+
+}
+
+User4.addOne(3) //이렇게 하면 x가 3 더해져야함
+User4.addOne(4) //이렇게 하면 x가 4 더해져야함
+User4.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
+
+
+//
+

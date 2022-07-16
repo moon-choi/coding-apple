@@ -1,0 +1,91 @@
+<script>
+
+//1번.
+함수();
+function 함수() {
+  console.log(안녕); //let 선언 하기도 전에 프린트해서 에러남. 
+  let 안녕 = 'Hello!';
+}; // before initialization error.   
+
+
+// function 함수(){} : 전부가 hoisting됌
+// var 함수 = function(){} : 선언 부분만 hoisting 됌
+
+//2번.
+함수();
+var 함수 = function() {
+  //var 함수는 선언 부분 | function() {} 는 할당 부분 
+  console.log(안녕);
+  var 안녕 = 'Hello!';
+} // 함수()is not a function error. 왜냐면 var 함수만 hoisting 돼서 함수가 아닌 것으로 인식함.  
+
+//3번. 
+let a = 1;
+var 함수 = function() {
+  a = 2;
+}
+console.log(a); //1 만약 콘솔로그전에 함수() 실행할경우 a = 2로 출력됌. 
+
+//4번.
+let a = 1; //좀더 가까운 변수
+var b = 2; //전역변수 | window.b 랑 같음. 
+window.a = 3; //전역변수
+window.b = 4; //재할당임. 그래서 b = 4 가 됌. 
+
+console.log(a + b); //5.  a = 1, b = 4 | 나랑 최대한 가까운 변수값을 출력.
+
+//5번. 
+
+// i 값은 전역변수 형태로 남아있어서
+// var i  = 5가 됌. 반복문이 다 돌고나서 i값이 5밖에 안남음. 
+for (var i = 1; i < 5; i++) { 
+  setTimeout(function() {console.log(counter)}, i*1000 );  
+}
+
+// 5번 애플 답.
+for (let i = 1; i < 6; i++) { //var를 let으로 바꿈. 
+  setTimeout(function() {console.log(counter)}, i*1000 );  
+}
+
+//내 답. 
+for (var i = 1; i < 5; i++) { 
+  let counter = 0;
+  counter = counter + i;
+  setTimeout(function() {console.log(counter)}, i*1000 ); 
+}
+
+</script>
+
+
+<div style="display : none">모달창0</div>
+<div style="display : none">모달창1</div>
+<div style="display : none">모달창2</div>
+
+<button>버튼0</button>
+<button>버튼1</button>
+<button>버튼2</button>
+
+<script> 
+
+//6번
+cument.querySelectorAll('button');
+var 모달창들 = document.querySelectorAll('div');
+
+for (var i = 0; i < 3; i++){ //반복문이 도는 시점과 코드가 실행돼는 시점이 달라서 에러가 남. 
+
+  버튼들[i].addEventListener('click', function(){
+    모달창들[i].style.display = 'block'; //반복문이 다 돌고나서, 클릭이 돼고 나중에 실행돼는 코드. 
+    // 실행됄 때 i를 채우려고 봤더니 전역변수 i = 3 이 돼서 남아있는 것밖에없다. 모달창들 중에 3은 없었기 때문에 에러남. 
+    
+  });
+
+}
+
+for (let i = 0; i < 3; i++){ // var 를 let 으로 바꾸면 해결됌. 
+버튼들[i].addEventListener('click', function(){
+  모달창들[i].style.display = 'block'; //i 라는 변수가 참조할 수 있는 범위가 생김.  
+});
+
+}
+
+</script>

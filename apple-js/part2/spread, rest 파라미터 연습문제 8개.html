@@ -1,0 +1,86 @@
+<script>
+//1
+var a = [1,2,3];
+var b = '김밥';
+var c = [...b, ...a];
+console.log(c);
+
+console.log('---')
+//2
+var a = [1,2,3];
+var b = ['you', 'are'];
+var c = function(a,b){
+  console.log( [[...a], ...[...b]][1] )
+}
+c(a,b);
+
+console.log('---')
+//3
+function 함수(a = 5, b = a * 2 ){
+  console.log(a + b);
+  return 10
+}
+함수(3);
+
+console.log('---')
+//4
+function 함수(a = 5, b = a * 2 ){
+  console.log(a + b);
+}
+함수(undefined, undefined);
+
+console.log('---')
+//5
+function 어레이(...params){
+  return params
+}
+
+var newArray = 어레이(1,2,3,4,5);
+console.log(newArray); 
+
+console.log('---')
+//6. 
+var numbers = [2,3,4,5,6,1,3,2,5,5,4,6,7];
+var max = Math.max(...numbers) // 어레이를 풀어헤쳐서 파라미터로 넣음.
+console.log(max)
+
+console.log('---')
+//7. 
+function 정렬(글자){
+  console.log(...[...글자].sort())
+}
+정렬('bear')
+
+console.log('---')
+//8.
+function 글자세기(string) {
+  let obj = {};
+  for (let key of string) {
+    if (!obj.hasOwnProperty(key)) {
+      obj[key] = 1;
+    } else {
+      obj[key]++;
+    }  
+  }
+  return obj;
+}
+
+console.log(글자세기('aaaaabcccc'))
+
+
+//8. 해설
+function 글자세기2(글자){
+  var result = {};
+  [...글자].forEach(function(a){
+    if(result[a] > 0) {
+      result[a] += 1;
+    } else {
+      result[a] = 1;
+    }
+  });
+  console.log(result)
+}
+
+글자세기2('eeefffgg')
+
+</script>

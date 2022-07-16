@@ -1,0 +1,115 @@
+<script>
+'use strict' //js strict mode 
+
+
+//window는 함수, 변수를 전역공간에서 만들면 보관되는 공간(오브젝트)
+//함수() === window.함수()와 같음. 
+//window는 전역 오브젝트임.
+// window: {
+//   함수() {
+//   console.log(this)
+//  }
+// }
+
+//this 는 4가지 용도를 가짐. 
+
+console.log(this) // 1. 그냥 this만 쓰면 window {}가 출력됌. 일반 함수안에서 써도 window{}가 출력됌. window는 자바스크립트 기본 함수를 담고있는 오브젝트임. 
+
+function 함수(){
+  console.log(this)
+}
+
+함수()
+
+var obj = {
+  data: 'kim',
+  func: function(){
+    console.log('hi')
+  },
+  func2: function(){
+    console.log(this) //2. 오브젝트 내 함수 안의 this: method 안의 this 는 나를 포함하고 있는 오브젝트. 이 method 가 동작하고 있는 오브젝트. this 를 오브젝트 내 함수안에서 쓰면 그 함수를 가지고 있는 오브젝트를 뜻함. 
+  }
+}
+
+//오브젝트안의 함수 (method) 실행하려면 ()붙여야함.
+obj.func(); //hi 
+obj.func2(); //{ data: 'kim', func: [Function: func], func2: [Function: func2] }
+
+
+/////
+var obj2 = {
+  data: {
+    func: function() {
+      console.log(this)
+    }
+  }
+}
+obj2.data.func() //{ func: [Function: func] } 
+//나를 포함하고 있는 오브젝트니까 데이터 오브젝트 안에있는것만 뽑아냄. 최상위 요소가 아님. 
+
+/////
+var obj3 = {
+  data: {
+    func: () => {
+      console.log(this) //arrow function: this 값을 함수밖에 있던 것 그대로 씀. 그래서 window를 출력함. 
+    }
+  }
+}
+
+obj3.data.func() //{}
+
+//
+
+var 어쩌구 = {}
+
+//자바스크립트 함수 : 오브젝트 반복 생성 기계(constructor)임. 함수 안에서 this를 쓸 때 기계가 됌. 
+
+function 기계(){
+  this.이름 = 'kim' //3. this 는 기계로부터 생성돼는 오브젝트를 뜻함. 
+}
+
+var 오브젝트 = new 기계();
+console.log(오브젝트) //기계 { '이름': 'kim' }
+
+</script>
+
+<!--  -->
+
+<button id="btn">button</button>
+
+<script>
+document.getElementById('btn').addEventListener('click', function(e){
+  console.log(e.currentTarget) //e.currentTarget 쓰려면 function 안에 e 파라미터를 추가해줘야함. 
+  console.log(this);    //4. this는 이벤트리스너 안에서 e.currentTarget를 뜻함.
+})
+
+
+document.getElementById('btn').addEventListener('click', function(e){
+  var arr = [1,2,3];
+  arr.forEach(function(a){ //forEach는 콜백함수를 받음. 
+    console.log(a) //a는 어레이 안에있는 하나하나의 데이터
+    console.log(this) //일반함수에서 쓰면 window 가 나옴. 
+  });
+});
+
+var obj = {
+  names: ['김', '이', '박'],
+  func: function() {
+    console.log(this) // { names: [ '김', '이', '박' ], func: [Function], func2: [Function] }
+    obj.names.forEach(function(){
+      // console.log(this) // 세번 반복하는 것임 //window 3번 출력. 
+    })
+  }, 
+  func2: function() {
+    obj.names.forEach( () => { //arrow function 특징: 외부 this 값 그대로 재사용 가능. 
+      console.log(this) // { names: [ '김', '이', '박' ], func: [Function], func2: [Function] }
+    })
+  } 
+}
+
+obj.func() //window 3번 출력. 
+obj.func2()
+
+</script>
+
+

@@ -1,0 +1,13 @@
+<script>
+  //async 를 function 앞에 붙이면 함수실행후에 프로미스 오브젝트가 남음.
+//async 만 붙이면 프로미스를 뱉어내고, then 도 붙일수 있어짐. 
+//async 의 단점: 성공만 할 수 있음.
+
+async function add() {
+  return 1 + 1;
+} 
+
+add().then(function(결과){
+  console.log(결과)  
+})
+</script>

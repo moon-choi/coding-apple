@@ -1,0 +1,37 @@
+<script>
+function first(){
+  console.log(1)
+}
+
+function second(){
+  console.log(2)  
+}
+
+first();
+second();
+
+first(second); // 첫째함수 다음에 둘째함수 실행하고 싶을 때
+
+first(function() {
+  console.log(2)
+}) //익명함수
+
+setTimeout( function(){ console.log(2) }, 1000)
+
+//콜백지옥을 막기위해 쓰는 것: promise (옆으로 길어지지 않음))
+
+first(function() {
+  second(function() {
+    third(function() {
+      //first 실행하고 second 실행하고 third 실행하고 싶을 때. 
+    })
+  })
+})
+
+first().then(function(){ //then 으로 계속 연결.
+  
+}).then(function() {
+  
+})
+
+</script>

@@ -1,0 +1,19 @@
+<script>
+  async function add(){
+  var promise = new Promise(function(resolve, reject){
+    var calc = 1 + 1;
+    resolve(100)
+  })
+
+  // promise.then(function(){
+  //   console.log('success')
+  // }) --> 이걸 간략하게 만들면 await 임. 
+  
+
+  var result = await promise; //프로미스 해결 될 때까지 기다림.성공/실패 판정나오면 결과를 담아줌. 
+  console.log(result)
+}
+
+add();
+
+</script>

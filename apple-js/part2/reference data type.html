@@ -1,0 +1,43 @@
+<script>
+//primitive data type
+var 이름1 = '김';
+var 이름2 = 이름1;
+이름1 = '박';
+console.log(이름1); //박
+console.log(이름2); //김
+console.log('--')
+//reference data type: array, object. 
+var 이름3 = {name: '김'} //name: 김이 저기 pc메모리에 저장돼어있음. 이라는 화살표가 할당됀 것.
+//데이터가 직접 이름3에 저장돼는게 아니라, 이 오브젝트는 저기 있어요라는 '화살표'가 저장됀 것. 
+var 이름4 = 이름3 //이름3의 화살표를 복사. 
+이름3.name = '박';
+
+console.log(이름3.name); //박
+console.log(이름4.name) //박
+
+var 이름4 = {name: '김'}
+var 이름5 = {name: '김'}
+
+console.log(이름1 == 이름2) //false
+//이유: 오브젝트가 변수에 저장됀 게 아니고 화살표가 저장됀 것
+// 화살표4 !== 화살표5 
+
+console.log('--')
+var 이름6 = { name: '김'} 
+function 변경(obj) {
+  return obj.name = '박' //오브젝트 값 변경 (성공))
+}
+console.log(변경(이름6)) //'박'
+
+console.log('--')
+var 이름7 = { name: '김'} 
+function 변경2(obj) { //obj 라는 파라미터를 쓰겠다 -> 변수만들기이다.
+  // 파라미터는 변수생성 & 할당과 똑같음.
+  // var obj = 이름1과 같음. 이름1에 저장됀건 화살표임. 
+  return obj = { name: '박' } //오브젝트 자체를 재할당 (실패)
+    // 기존화살표를 버리고 새로운 화살표를 만든 것임.
+
+}
+console.log(이름7) // {name: '김'} // 원래 오브젝트는 안바뀜. 
+console.log(변경2(이름7)) // {name: '박'} (살퍄)
+</script>

@@ -1,0 +1,49 @@
+<script>
+
+//1. 답
+var 사람 = {
+  name: '손흥민',
+  sayHi: function(){
+    console.log(`안녕 나는 ${this.name}`)
+  }
+};
+
+사람.sayHi(); //안녕 나는 손흥민
+
+//2. 내버전
+var 자료 = { 
+  data : [1,2,3,4,5],
+};
+
+자료.전부더하기 = function(){
+  console.log(자료.data.reduce((a, b) => a + b, 0))
+};
+
+//2. 애플해설
+자료.전부더하기2 = function() {
+  var sum = 0;
+  this.data.forEach(function(a){
+    sum = sum + a
+  });
+  console.log(sum)
+}
+
+자료.전부더하기2()
+
+</script>
+
+<button id="버튼">버튼이에요</button>
+
+<script>
+//3. 답
+document.getElementById('버튼').addEventListener('click', function(){
+  setTimeout( () => { console.log(this.innerHTML) }, 1000)
+});
+
+  
+//옛날방식
+document.getElementById('버튼').addEventListener('click', function(){
+    var button = this;
+  setTimeout( function() => { console.log(button.innerHTML) }, 1000)
+});
+</script>

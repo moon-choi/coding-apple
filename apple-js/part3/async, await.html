@@ -1,0 +1,17 @@
+<button id="btn">button</button>
+
+<script>
+
+var promise = new Promise(function(resolve, reject){
+   document.getElementById('btn').addEventListener('click', function(){ 
+      resolve('성공했어요');
+   });  
+});
+async function btnclick(){
+
+  var result = await promise //성공하면 결과안에 담아줌.
+  console.log(result)
+};
+
+btnclick();
+</script>
