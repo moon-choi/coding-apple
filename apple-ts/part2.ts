@@ -208,5 +208,62 @@ User4.addOne(4) //이렇게 하면 x가 4 더해져야함
 User4.printX()  //이렇게 하면 콘솔창에 x값이 출력되어야함
 
 
+// Generic 함수
+// 장점: 확장성... 자동으로 타입 인식함.
+
+function 함수<MyType>(x: MyType[]): MyType {
+  return x[0];
+}
+// 함수<number>( ) 이렇게 쓰는 순간 MyType 이라는 변수에 number 라는게 들어간다. 
+// 함수(x : number[]) :number { } 이거랑 똑같이 동작합니다. 
+
+let a1 = 함수<number>([4, 2])
+let b1 = 함수<string>(['kim', 'park'])
+
+
+// 실은 함수 사용시 꼭 <> 안써도 알아서 기본 타입을 유추해서 집어넣어줍니다. 
+// 이래도 결과는 똑같습니다.
+
+let a2 = 함수([4, 2])
+let b2 = 함수(['kim', 'park'])
+
+//Generic 타입 제한하기 (constraints)
+
+//틀린 코드
+function 함수<MyType>(x: MyType) {
+  // return x - 1 //이미 경고해줌.
+}
+
+let a3 = 함수<number>(100)
+
+//맞는 코드
+function 함수<MyType extends number>(x: MyType) {
+  return x - 1
+}
+
+let a4 = 함수<number>(100) //잘됩니다
+
 //
+interface lengthCheck {
+  length: number
+}
+function 함수<MyType extends lengthCheck>(x: MyType) {
+  return x.length
+}
+
+//여기서 extends 는 복사가 아니고 '오른쪽 조건을 만족하면' 임.
+
+let a = 함수<string>('hello')  //가능
+let a = 함수<number>(1234) //에러남
+
+//숙제1
+
+function 함수<MyType extends string | string[]>(x: MyType) {
+  console.log(x.length)
+}
+
+함수<string>('hello');
+함수<string[]>(['kim', 'park'])
+
+//숙제2
 
