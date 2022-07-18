@@ -267,3 +267,27 @@ function 함수<MyType extends string | string[]>(x: MyType) {
 
 //숙제2
 
+interface Animal2 {
+  name: string;
+  age: number
+}
+
+let data = '{"name" : "dog", "age" : 1 }'
+
+function parser<Type>(x: string): Type {
+  return JSON.parse(x)
+}
+
+console.log(parser<Animal2>(data))
+
+
+//숙제3
+
+class Person3<T> {
+  name;
+  constructor(a: T) {
+    this.name = a;
+  }
+}
+let b = new Person3<string>('어쩌구');
+b.name //string 타입이 되었넹 
