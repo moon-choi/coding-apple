@@ -1,15 +1,17 @@
 import { Routes, Route } from 'react-router-dom'
 import React, { useState } from 'react'
-import Detail from './routes/Detail.js'
-import './App.css';
-import data from './data.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { Button, Navbar, Container, Nav } from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+
+import Detail from './routes/Detail.js'
+import data from './data.js';
 import bg from './bg.png'
 
 function App() {
-
   let [shoes] = useState(data);
+
   return (
     <>
       <div>
