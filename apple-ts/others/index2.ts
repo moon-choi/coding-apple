@@ -1,3 +1,5 @@
+import { Age, Person } from "./type-definition"
+
 // ...  SPREAD / REST
 
 // 1. 괄호벗겨주는 ...spread는 array, object 자료 왼쪽에,
@@ -291,3 +293,19 @@ class Person3<T> {
 }
 let b = new Person3<string>('어쩌구');
 b.name //string 타입이 되었넹 
+
+
+//React + TS
+
+//JSX.Element: html 타입
+
+
+let 이름: string = 'kim';
+let 나이 = 20;
+interface Person { name: string }
+let 사람: Person = { name: 'park' }
+
+//
+
+declare let a: number;
+// 다른데에 정의가 돼있는 것을 타입스크립트에서 재정의. 
