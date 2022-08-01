@@ -424,3 +424,35 @@ let obj: MyType = {
     }
   }
 }
+
+//숙제1
+interface CarType {
+  [key: string]: string | number
+}
+
+let myCar: CarType = {
+  model: 'k5',
+  brand: 'kia',
+  price: 6000,
+  year: 2030,
+  date: '6월',
+  percent: '5%',
+  dealer: '김차장',
+}
+
+//숙제2
+
+interface ObjType {
+  'font-size': number,
+  [key: string]: ObjType | number,
+}
+
+let obj2: ObjType = {
+  'font-size': 10,
+  'secondary': {
+    'font-size': 12,
+    'third': {
+      'font-size': 14
+    }
+  }
+}
