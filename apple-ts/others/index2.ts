@@ -367,3 +367,38 @@ function 함수3(...rest: (string | number)[]) {
 }
 
 함수3('b', 5, 6, 8, 'a')
+
+
+//implements
+
+class Car1 {
+  model: string;
+  price: number = 1000;
+  constructor(a: string) {
+    this.model = a
+  }
+}
+
+interface CarType {
+  model: string,
+  price: number
+}
+
+class Car implements CarType {
+  model: string;
+  price: number = 1000;
+  constructor(a: string) {
+    this.model = a
+  }
+}
+let 붕붕이 = new Car1('morning');
+
+//class 이름 우측에 implements를 쓰고 interface 이름을 쓰면
+
+// "이 class가 이 interface에 있는 속성을 다 들고있냐" 라고 확인이 가능합니다.
+
+// 그래서 다 갖고 있으면 별말 안해주고 혹여나 빠진 속성이 있으면 에러로 알려줍니다.
+
+//implements라는건 interface에 들어있는 속성을 가지고 있는지 확인만하라는 뜻입니다.
+
+//class에다가 타입을 할당하고 변형시키는 키워드는 아닙니다.
