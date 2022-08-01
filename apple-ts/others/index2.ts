@@ -309,3 +309,31 @@ let 사람: Person = { name: 'park' }
 
 declare let a: number;
 // 다른데에 정의가 돼있는 것을 타입스크립트에서 재정의. 
+
+
+//tuple
+
+function 함수1(...x: string[]) {
+  console.log(x)
+}
+// 함수 정의할 때 파라미터 왼쪽에 점3개 붙이면 rest parameter라고 했습니다.
+
+// "여기에 파라미터가 몇 개 들어올지 아직 몰라요~" 라는 뜻으로 사용하는 파라미터입니다.
+
+// x 자리에 입력한 파라미터들은 array에 담겨오기 때문에 array 처럼 타입지정을 해주는게 일반적입니다. 
+
+// 근데 tuple을 이용해서 타입지정을 해주는 것도 가능
+
+// 옵션 가능
+type Num = [number, number?, number?];
+let 변수1: Num = [10];
+let 변수2: Num = [10, 20];
+let 변수3: Num = [10, 20, 10];
+
+
+//array 두개를 spread 연산자로 합치는 경우 타입지정
+
+//arr 자리에 자료 몇개가 들어올지도 모르는 상황
+
+let arr = [1, 2, 3]
+let arr2: [number, number, ...number[]] = [4, 5, ...arr]  
