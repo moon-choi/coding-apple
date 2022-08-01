@@ -336,4 +336,34 @@ let 변수3: Num = [10, 20, 10];
 //arr 자리에 자료 몇개가 들어올지도 모르는 상황
 
 let arr = [1, 2, 3]
-let arr2: [number, number, ...number[]] = [4, 5, ...arr]  
+let arr2: [number, number, ...number[]] = [4, 5, ...arr]
+
+//숙제 1
+type Arr2 = [string, number, boolean]
+let food: Arr2 = ['sushi', 15, true]
+
+//숙제 2
+type Arr3 = [string, number, ...boolean[]]
+let arr3: Arr3 = ['동서녹차', 4000, true, false, true, true, false, true]
+
+//숙제 3
+function 함수2(...x: [string, boolean, ...(number | string)[]]) {
+}
+
+함수2('a', true, 6, 3, '1', 4)
+
+//숙제 4
+function 함수3(...rest: (string | number)[]) {
+
+  let result: [string[], number[]] = [[], []];
+  rest.forEach((x) => {
+    if (typeof x === 'string') {
+      result[0].push(x)
+    } else {
+      result[1].push(x)
+    }
+  })
+  return result;
+}
+
+함수3('b', 5, 6, 8, 'a')
