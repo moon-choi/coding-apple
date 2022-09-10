@@ -1,3 +1,5 @@
+import { Age, Person } from "./type-definition"
+
 // ...  SPREAD / REST
 
 // 1. 괄호벗겨주는 ...spread는 array, object 자료 왼쪽에,
@@ -291,3 +293,166 @@ class Person3<T> {
 }
 let b = new Person3<string>('어쩌구');
 b.name //string 타입이 되었넹 
+
+
+//React + TS
+
+//JSX.Element: html 타입
+
+
+let 이름: string = 'kim';
+let 나이 = 20;
+interface Person { name: string }
+let 사람: Person = { name: 'park' }
+
+//
+
+declare let a: number;
+// 다른데에 정의가 돼있는 것을 타입스크립트에서 재정의. 
+
+
+//tuple
+
+function 함수1(...x: string[]) {
+  console.log(x)
+}
+// 함수 정의할 때 파라미터 왼쪽에 점3개 붙이면 rest parameter라고 했습니다.
+
+// "여기에 파라미터가 몇 개 들어올지 아직 몰라요~" 라는 뜻으로 사용하는 파라미터입니다.
+
+// x 자리에 입력한 파라미터들은 array에 담겨오기 때문에 array 처럼 타입지정을 해주는게 일반적입니다. 
+
+// 근데 tuple을 이용해서 타입지정을 해주는 것도 가능
+
+// 옵션 가능
+type Num = [number, number?, number?];
+let 변수1: Num = [10];
+let 변수2: Num = [10, 20];
+let 변수3: Num = [10, 20, 10];
+
+
+//array 두개를 spread 연산자로 합치는 경우 타입지정
+
+//arr 자리에 자료 몇개가 들어올지도 모르는 상황
+
+let arr = [1, 2, 3]
+let arr2: [number, number, ...number[]] = [4, 5, ...arr]
+
+//숙제 1
+type Arr2 = [string, number, boolean]
+let food: Arr2 = ['sushi', 15, true]
+
+//숙제 2
+type Arr3 = [string, number, ...boolean[]]
+let arr3: Arr3 = ['동서녹차', 4000, true, false, true, true, false, true]
+
+//숙제 3
+function 함수2(...x: [string, boolean, ...(number | string)[]]) {
+}
+
+함수2('a', true, 6, 3, '1', 4)
+
+//숙제 4
+function 함수3(...rest: (string | number)[]) {
+
+  let result: [string[], number[]] = [[], []];
+  rest.forEach((x) => {
+    if (typeof x === 'string') {
+      result[0].push(x)
+    } else {
+      result[1].push(x)
+    }
+  })
+  return result;
+}
+
+함수3('b', 5, 6, 8, 'a')
+
+
+//implements
+
+class Car1 {
+  model: string;
+  price: number = 1000;
+  constructor(a: string) {
+    this.model = a
+  }
+}
+
+interface CarType {
+  model: string,
+  price: number
+}
+
+class Car implements CarType {
+  model: string;
+  price: number = 1000;
+  constructor(a: string) {
+    this.model = a
+  }
+}
+let 붕붕이 = new Car1('morning');
+
+//class 이름 우측에 implements를 쓰고 interface 이름을 쓰면
+
+// "이 class가 이 interface에 있는 속성을 다 들고있냐" 라고 확인이 가능합니다.
+
+// 그래서 다 갖고 있으면 별말 안해주고 혹여나 빠진 속성이 있으면 에러로 알려줍니다.
+
+//implements라는건 interface에 들어있는 속성을 가지고 있는지 확인만하라는 뜻입니다.
+
+//class에다가 타입을 할당하고 변형시키는 키워드는 아닙니다.
+
+//index signatures
+
+interface StringOnly {
+  age: number,   ///가능
+  [key: string]: string | number,
+}
+
+//Recursive Index Signatures
+
+interface MyType {
+  'font-size': MyType | number
+}
+
+
+let obj: MyType = {
+  'font-size': {
+    'font-size': {
+      'font-size': 14
+    }
+  }
+}
+
+//숙제1
+interface CarType {
+  [key: string]: string | number
+}
+
+let myCar: CarType = {
+  model: 'k5',
+  brand: 'kia',
+  price: 6000,
+  year: 2030,
+  date: '6월',
+  percent: '5%',
+  dealer: '김차장',
+}
+
+//숙제2
+
+interface ObjType {
+  'font-size': number,
+  [key: string]: ObjType | number,
+}
+
+let obj2: ObjType = {
+  'font-size': 10,
+  'secondary': {
+    'font-size': 12,
+    'third': {
+      'font-size': 14
+    }
+  }
+}
