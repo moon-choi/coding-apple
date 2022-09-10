@@ -1,13 +1,13 @@
-import { Routes, Route } from 'react-router-dom'
-import React, { useState } from 'react'
+import { Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 
-import { Button, Navbar, Container, Nav } from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
-import Detail from './routes/Detail.js'
-import data from './data.js';
-import bg from './bg.png'
+import Detail from "./routes/Detail.js";
+import data from "./data.js";
+import bg from "./bg.png";
 
 function App() {
   let [shoes] = useState(data);
@@ -15,7 +15,10 @@ function App() {
   return (
     <>
       <div>
-        <div className="main-bg" style={{ backgroundImage: 'url(' + bg + ')' }}></div>
+        <div
+          className="main-bg"
+          style={{ backgroundImage: "url(" + bg + ")" }}
+        ></div>
       </div>
 
       <div>
@@ -34,17 +37,26 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
+            <img
+              src="https://codingapple1.github.io/shop/shoes1.jpg"
+              width="80%"
+            />
             <h4>{shoes[0].title}</h4>
             <p>{shoes[0].price}</p>
           </div>
           <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%" />
+            <img
+              src="https://codingapple1.github.io/shop/shoes2.jpg"
+              width="80%"
+            />
             <h4>상품명</h4>
             <p>상품정보</p>
           </div>
           <div className="col-md-4">
-            <img src="https://codingapple1.github.io/shop/shoes3.jpg" width="80%" />
+            <img
+              src="https://codingapple1.github.io/shop/shoes3.jpg"
+              width="80%"
+            />
             <h4>상품명</h4>
             <p>상품정보</p>
           </div>
