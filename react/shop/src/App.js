@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Routes, Route, Link } from "react-router-dom";
-import React, { Component, useState } from "react";
+import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
+import React, { useState } from "react";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -10,6 +10,7 @@ import bg from "./bg.png";
 
 function App() {
   let [shoes] = useState(data);
+  let navigate = useNavigate
 
   return (
     <>
@@ -50,8 +51,17 @@ function App() {
             </div>
           </>
         } />
-        <Route path="/about" element={<div>어바웃페이지임</div>} />
-        <Route path="/detail" element={<><div>디테일페이지임</div> <Detail/></>} />
+        <Route path="/about" element={<About />} >
+          <Route path="member" element={<div>멤버들</div>} />
+          <Route path="location" element={<div>회사위치</div>} />
+        </Route>
+        <Route path="/event" element={<Event />} >
+          <Route path="one" element={<div><p>첫 주문시 양배추즙 서비스</p></div>} />
+          <Route path="two" element={<div><p>생일기념 쿠폰받기</p></div>} />
+        </Route>
+        <Route path="/detail" element={<><div>디테일페이지임</div>
+          <Detail /></>} />
+        <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
       <div className="App">
         
@@ -71,4 +81,23 @@ function Card(props) {
   )
 }
 
+function About() {
+  return (
+    <div>
+      <h4>about페이지임</h4>
+      <Outlet /> 
+      {/* 여기에 div 보여줌 */}
+    </div>
+  )
+}
+
+function Event() {
+  return (
+    <div>
+      <h4>오늘의 이벤트</h4>
+      <Outlet />
+      {/* 여기에 div 보여줌 */}
+    </div>
+  )
+}
 export default App;
