@@ -59,8 +59,8 @@ function App() {
           <Route path="one" element={<div><p>첫 주문시 양배추즙 서비스</p></div>} />
           <Route path="two" element={<div><p>생일기념 쿠폰받기</p></div>} />
         </Route>
-        <Route path="/detail" element={<><div>디테일페이지임</div>
-          <Detail /></>} />
+        <Route path="/detail/:id" element={<><div>디테일페이지임</div>
+          <Detail shoes={shoes} /></>} />
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
       <div className="App">
