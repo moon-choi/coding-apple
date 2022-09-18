@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import React, { Component, useState } from "react";
-import ReactDOM from "react-dom";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -14,42 +13,49 @@ function App() {
 
   return (
     <>
-      <div>
         <div
           className="main-bg"
           style={{ backgroundImage: "url(" + bg + ")" }}
         ></div>
-      </div>
 
       <div>
         <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/features">Features</Nav.Link>
+              <Nav.Link href="/pricing">Pricing</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link href="/detail">Detail</Nav.Link>
+
             </Nav>
+
+
           </Container>
         </Navbar>
       </div>
 
-      <div className="container">
-        <div className="row">
-          <Card shoe={shoes[0]} i={1} />
-          <Card shoe={shoes[1]} i={2} />
-          <Card shoe={shoes[2]} i={3} />
-
-          {/* {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i} ></Card>
-          })} */}
-        </div>
-      </div> 
+      {/* 라우트: 페이지 나누기 나기 */}
+      <Routes>
+        <Route path="/" element={
+          <>
+            <h3>메인페이지임</h3>
+            <div className="container">
+              <div className="row">
+                {shoes.map((a, i) => {
+                  return <Card shoe={shoes[i]} index={i} ></Card>
+                })}
+              </div>
+            </div>
+          </>
+        } />
+        <Route path="/about" element={<div>어바웃페이지임</div>} />
+        <Route path="/detail" element={<><div>디테일페이지임</div> <Detail/></>} />
+      </Routes>
       <div className="App">
-        <Routes>
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/about" element={<div>어바웃페이지임</div>} />
-        </Routes>
+        
+
       </div>
     </>
   );
