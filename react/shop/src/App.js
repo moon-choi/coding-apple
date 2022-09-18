@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
-
+import React, { Component, useState } from "react";
+import ReactDOM from "react-dom";
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 import Detail from "./routes/Detail.js";
 import data from "./data.js";
 import bg from "./bg.png";
@@ -36,32 +36,15 @@ function App() {
 
       <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes1.jpg"
-              width="80%"
-            />
-            <h4>{shoes[0].title}</h4>
-            <p>{shoes[0].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes2.jpg"
-              width="80%"
-            />
-            <h4>{shoes[1].title}</h4>
-            <p>{shoes[1].price}</p>
-          </div>
-          <div className="col-md-4">
-            <img
-              src="https://codingapple1.github.io/shop/shoes3.jpg"
-              width="80%"
-            />
-            <h4>{shoes[2].title}</h4>
-            <p>{shoes[2].price}</p>
-          </div>
+          <Card shoe={shoes[0]} i={1} />
+          <Card shoe={shoes[1]} i={2} />
+          <Card shoe={shoes[2]} i={3} />
+
+          {/* {shoes.map((a, i) => {
+            return <Card shoes={shoes[i]} i={i} ></Card>
+          })} */}
         </div>
-      </div>
+      </div> 
       <div className="App">
         <Routes>
           <Route path="/detail" element={<Detail />} />
@@ -70,6 +53,16 @@ function App() {
       </div>
     </>
   );
+}
+
+function Card(props) {
+  return (
+    <div className="col-md-4">
+      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
+      <h4>{props.shoe.title}</h4>
+      <p>{props.shoe.price }</p>
+    </div>
+  )
 }
 
 export default App;
