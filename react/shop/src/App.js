@@ -5,6 +5,8 @@ import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Detail from "./routes/Detail.js";
+import Detail2 from "./routes/Detail2.js";
+
 import data from "./data.js";
 import bg from "./bg.png";
 
@@ -29,7 +31,7 @@ function App() {
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/detail">Detail</Nav.Link>
-
+              <Nav.Link href="/detail2">Detail2</Nav.Link>
             </Nav>
 
 
@@ -37,7 +39,7 @@ function App() {
         </Navbar>
       </div>
 
-      {/* 라우트: 페이지 나누기 나기 */}
+      {/* 라우트: 페이지 나누기 */}
       <Routes>
         <Route path="/" element={
           <>
@@ -59,8 +61,12 @@ function App() {
           <Route path="one" element={<div><p>첫 주문시 양배추즙 서비스</p></div>} />
           <Route path="two" element={<div><p>생일기념 쿠폰받기</p></div>} />
         </Route>
+
         <Route path="/detail/:id" element={<><div>디테일페이지임</div>
           <Detail shoes={shoes} /></>} />
+        <Route path="/detail2/:id" element={<><div>디테일페이지임</div>
+          <Detail2 shoes={shoes} /></>} />
+
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
       <div className="App">
