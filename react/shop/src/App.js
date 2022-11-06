@@ -33,10 +33,7 @@ function App() {
               <Nav.Link href="/detail">Detail</Nav.Link>
               <Nav.Link href="/detail2">Detail2</Nav.Link>
               <Nav.Link href="/detail3">Detail3</Nav.Link>
-
             </Nav>
-
-
           </Container>
         </Navbar>
       </div>
