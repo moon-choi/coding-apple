@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Detail from "./routes/Detail.js";
 import Detail2 from "./routes/Detail2.js";
-
+import Detail3 from "./routes/Detail3.js";
 import data from "./data.js";
 import bg from "./bg.png";
 
@@ -32,6 +32,8 @@ function App() {
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/detail">Detail</Nav.Link>
               <Nav.Link href="/detail2">Detail2</Nav.Link>
+              <Nav.Link href="/detail3">Detail3</Nav.Link>
+
             </Nav>
 
 
@@ -64,8 +66,10 @@ function App() {
 
         <Route path="/detail/:id" element={<><div>디테일페이지임</div>
           <Detail shoes={shoes} /></>} />
-        <Route path="/detail2/:id" element={<><div>디테일페이지임</div>
+        <Route path="/detail2/:id" element={<><div>디테일페이지임2</div>
           <Detail2 shoes={shoes} /></>} />
+        <Route path="/detail3/:id" element={<><div>디테일페이지임3</div>
+          <Detail3 shoes={shoes} /></>} />
 
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
