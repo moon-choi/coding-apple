@@ -3,13 +3,13 @@ import styled from 'styled-components'
 function Detail(props) {
   let { id } = useParams();
   // console.log(typeof id) //is 는 string
-  let item = props.shoes.find(x => x["id"] == id);
-
+  let item = props.shoes.find(x => x["id"] === id);
 
   let Box = styled.div`
   padding : 20px;
   color : grey
 `;
+  
   let Btn = styled.button`
   background : ${props => props.bg};
   color : ${props => props.bg == 'orange' ? 'blue' : 'yellow'};  padding : 10px;

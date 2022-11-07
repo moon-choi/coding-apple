@@ -9,6 +9,7 @@ import Detail2 from "./routes/Detail2.js";
 import Detail3 from "./routes/Detail3.js";
 import data from "./data.js";
 import bg from "./bg.png";
+import axios from 'axios'
 
 function App() {
   let [shoes] = useState(data);
@@ -16,10 +17,10 @@ function App() {
 
   return (
     <>
-        <div
-          className="main-bg"
-          style={{ backgroundImage: "url(" + bg + ")" }}
-        ></div>
+      <div
+        className="main-bg"
+        style={{ backgroundImage: "url(" + bg + ")" }}
+      ></div>
 
       <div>
         <Navbar bg="dark" variant="dark">
@@ -71,7 +72,14 @@ function App() {
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
       <div className="App">
-        
+        <button onClick={() => {
+          axios.get('https://codingapple1.github.io/shop/data2.json').then((결과) => {
+            console.log(결과.data)
+          })
+          .catch(() => {
+            console.log('실패함')
+          })
+        }}>버튼</button>
 
       </div>
     </>
@@ -83,7 +91,7 @@ function Card(props) {
     <div className="col-md-4">
       <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
       <h4>{props.shoe.title}</h4>
-      <p>{props.shoe.price }</p>
+      <p>{props.shoe.price}</p>
     </div>
   )
 }
@@ -92,7 +100,7 @@ function About() {
   return (
     <div>
       <h4>about페이지임</h4>
-      <Outlet /> 
+      <Outlet />
       {/* 여기에 div 보여줌 */}
     </div>
   )
