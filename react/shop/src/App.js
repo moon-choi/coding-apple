@@ -12,8 +12,8 @@ import bg from "./bg.png";
 import axios from 'axios'
 
 function App() {
-  let [shoes] = useState(data);
-  let navigate = useNavigate
+  let [shoes, setShoes] = useState(어쩌구);
+  // let navigate = useNavigate
 
   return (
     <>
@@ -73,8 +73,10 @@ function App() {
       </Routes>
       <div className="App">
         <button onClick={() => {
-          axios.get('https://codingapple1.github.io/shop/data2.json').then((결과) => {
-            console.log(결과.data)
+          axios.get('https://codingapple1.github.io/shop/data2.json').then((result) => {
+            console.log(result.data)
+            let copy = [...shoes, ...result.data]
+            setShoes(copy)
           })
           .catch(() => {
             console.log('실패함')
