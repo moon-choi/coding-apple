@@ -12,7 +12,7 @@ import bg from "./bg.png";
 import axios from 'axios'
 
 function App() {
-  let [shoes, setShoes] = useState(어쩌구);
+  let [shoes, setShoes] = useState();
   // let navigate = useNavigate
 
   return (
@@ -46,7 +46,7 @@ function App() {
             <h3>메인페이지임</h3>
             <div className="container">
               <div className="row">
-                {shoes.map((a, i) => {
+                {shoes.map((a, i) => { //shoes는 array.
                   return <Card shoe={shoes[i]} index={i} ></Card>
                 })}
               </div>
@@ -74,8 +74,10 @@ function App() {
       <div className="App">
         <button onClick={() => {
           axios.get('https://codingapple1.github.io/shop/data2.json').then((result) => {
-            console.log(result.data)
+            console.log(result.data) //result는 [ {}, {}, {} ... ]
             let copy = [...shoes, ...result.data]
+            //array 변경은 항상 복사본을 만든 뒤에!
+            // ...는 괄호를 벗김.
             setShoes(copy)
           })
           .catch(() => {
