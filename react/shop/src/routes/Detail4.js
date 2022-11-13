@@ -20,10 +20,10 @@ function Detail4(props) {
 
       {
         alert === true ?
-        <div className="alert alert-warning">
-          2초이내 구매시 할인
-        </div>
-        : null
+          <div className="alert alert-warning">
+            2초이내 구매시 할인
+          </div>
+          : null
       }
 
       <div className="row">
@@ -36,7 +36,7 @@ function Detail4(props) {
             <button className="btn btn-danger">주문하기</button>
           </div>
         </div>
-        
+
         <Nav variant="tabs" defaultActiveKey="link0">
           <Nav.Item>
             <Nav.Link onClick={() => { 탭변경(0) }} eventKey="link0">버튼0</Nav.Link>
@@ -63,12 +63,12 @@ function TabContent(props) {
       setFade('')
     }
   }, [props.탭])
-    
+
   return (
     <div className={'start ' + fade}>
       {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
     </div>)
-  
+
 }
 // 아니면 function TabContent({탭}){
 // return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]
