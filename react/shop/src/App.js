@@ -81,7 +81,7 @@ function App() {
             setShoes(copy)
           })
           .catch(() => {
-            console.log('실패함')
+            console.log('실패함') 
           })
         }}>버튼</button>
 
