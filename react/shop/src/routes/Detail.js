@@ -2,8 +2,9 @@ import { useParams } from "react-router-dom";
 import styled from 'styled-components'
 function Detail(props) {
   let { id } = useParams();
-  // console.log(typeof id) //is 는 string
-  let item = props.shoes.find(x => x["id"] === id);
+  // console.log(typeof id) //id는 string
+  // eslint-disable-next-line eqeqeq
+  let item = props.shoes.find(x => x["id"] == id); // === 로 하면 안찾아짐. 꼭 ==로!
 
   let Box = styled.div`
   padding : 20px;
@@ -12,8 +13,11 @@ function Detail(props) {
   
   let Btn = styled.button`
   background : ${props => props.bg};
-  color : ${props => props.bg == 'orange' ? 'blue' : 'yellow'};  padding : 10px;
+  color : ${props => props.bg === 'orange' ? 'blue' : 'yellow'};  padding : 10px;
 `;
+  console.log('props', props)
+  console.log('item', item)
+
   return (
     <div className="container">
       <div className="row">

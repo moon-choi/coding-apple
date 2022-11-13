@@ -1,18 +1,19 @@
-/* eslint-disable jsx-a11y/alt-text */
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom'
-import React, { useState } from "react";
-import { Button, Navbar, Container, Nav } from "react-bootstrap";
+import data from './data.js';
+import { Routes, Route, Outlet } from 'react-router-dom'
+import { useState } from "react";
+import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Detail from "./routes/Detail.js";
-import Detail2 from "./routes/Detail2.js";
-import Detail3 from "./routes/Detail3.js";
-import data from "./data.js";
+// import Detail2 from "./routes/Detail2.js";
+// import Detail3 from "./routes/Detail3.js";
+import Detail4 from "./routes/Detail4.js";
+
 import bg from "./bg.png";
 import axios from 'axios'
 
 function App() {
-  let [shoes, setShoes] = useState();
+  let [shoes, setShoes] = useState(data); //initial: shoes data array of objects.
   // let navigate = useNavigate
 
   return (
@@ -32,8 +33,9 @@ function App() {
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/detail">Detail</Nav.Link>
-              <Nav.Link href="/detail2">Detail2</Nav.Link>
-              <Nav.Link href="/detail3">Detail3</Nav.Link>
+              {/*  <Nav.Link href="/detail2">Detail2</Nav.Link>
+              <Nav.Link href="/detail3">Detail3</Nav.Link> */}
+              <Nav.Link href="/detail4">Detail4</Nav.Link>
             </Nav>
           </Container>
         </Navbar>
@@ -64,10 +66,13 @@ function App() {
 
         <Route path="/detail/:id" element={<><div>디테일페이지임</div>
           <Detail shoes={shoes} /></>} />
-        <Route path="/detail2/:id" element={<><div>디테일페이지임2</div>
+        {/* <Route path="/detail2/:id" element={<><div>디테일페이지임2</div>
           <Detail2 shoes={shoes} /></>} />
         <Route path="/detail3/:id" element={<><div>디테일페이지임3</div>
-          <Detail3 shoes={shoes} /></>} />
+          <Detail3 shoes={shoes} /></>} /> */}
+        <Route path="/detail4/:id" element={<><div>디테일페이지임3</div>
+          <Detail4 shoes={shoes} /></>} />
+
 
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
@@ -93,7 +98,7 @@ function App() {
 function Card(props) {
   return (
     <div className="col-md-4">
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
+      <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" alt="shoes1"/>
       <h4>{props.shoe.title}</h4>
       <p>{props.shoe.price}</p>
     </div>
