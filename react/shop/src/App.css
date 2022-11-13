@@ -4,3 +4,21 @@
   background-size : cover;
   background-position : center;
 }
+
+.start {
+  opacity : 0
+}
+.end {
+  opacity : 1;
+  transition : opacity 0.5s;
+}
+
+.App {
+  text-align: center;
+  letter-spacing: -0.8px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}

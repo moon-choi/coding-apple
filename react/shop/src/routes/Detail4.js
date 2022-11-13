@@ -56,7 +56,19 @@ function Detail4(props) {
 }
 
 function TabContent(props) {
-  return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]
+  let [fade, setFade] = useState('')
+  useEffect(() => {
+    setTimeout(() => { setFade('end') }, 100)
+    return () => {
+      setFade('')
+    }
+  }, [props.탭])
+    
+  return (
+    <div className={'start ' + fade}>
+      {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
+    </div>)
+  
 }
 // 아니면 function TabContent({탭}){
 // return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]
