@@ -4,7 +4,7 @@ import { Nav } from 'react-bootstrap'
 
 function Detail4(props) {
   let { id } = useParams();
-  let item = props.shoes.find(x => x["id"] == id);
+  let item = props.shoes.find(x => x["id"] == id); // === 하면 오류남. 꼭 ==로!
   let [alert, setAlert] = useState(true);
   let [탭, 탭변경] = useState(0)
 

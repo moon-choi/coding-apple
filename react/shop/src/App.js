@@ -4,11 +4,10 @@ import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import Detail from "./routes/Detail.js";
+// import Detail from "./routes/Detail.js";
 // import Detail2 from "./routes/Detail2.js";
 // import Detail3 from "./routes/Detail3.js";
 import Detail4 from "./routes/Detail4.js";
-
 import bg from "./bg.png";
 import axios from 'axios'
 
@@ -55,27 +54,32 @@ function App() {
             </div>
           </>
         } />
+
         <Route path="/about" element={<About />} >
           <Route path="member" element={<div>멤버들</div>} />
           <Route path="location" element={<div>회사위치</div>} />
         </Route>
+
         <Route path="/event" element={<Event />} >
           <Route path="one" element={<div><p>첫 주문시 양배추즙 서비스</p></div>} />
           <Route path="two" element={<div><p>생일기념 쿠폰받기</p></div>} />
         </Route>
 
-        <Route path="/detail/:id" element={<><div>디테일페이지임</div>
+        {/* <Route path="/detail/:id" element={<><div>디테일페이지임</div>
           <Detail shoes={shoes} /></>} />
-        {/* <Route path="/detail2/:id" element={<><div>디테일페이지임2</div>
+
+         <Route path="/detail2/:id" element={<><div>디테일페이지임2</div>
           <Detail2 shoes={shoes} /></>} />
+
         <Route path="/detail3/:id" element={<><div>디테일페이지임3</div>
-          <Detail3 shoes={shoes} /></>} /> */}
+          <Detail3 shoes={shoes} /></>} />  */}
+        
         <Route path="/detail4/:id" element={<><div>디테일페이지임3</div>
           <Detail4 shoes={shoes} /></>} />
 
-
         <Route path="*" element={<div>없는페이지임</div>} />
       </Routes>
+
       <div className="App">
         <button onClick={() => {
           axios.get('https://codingapple1.github.io/shop/data2.json').then((result) => {
