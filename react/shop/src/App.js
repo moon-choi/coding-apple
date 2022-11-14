@@ -6,29 +6,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Detail from "./routes/Detail.js";
 import Detail4 from "./routes/Detail4.js";
-import bg from "./bg.png";
+import bg from './bg.png'
 import axios from 'axios'
-export let StockContext = React.createContext(); //context 는 state 보관함
+export let StockContext = React.createContext(); //context 는 state 보관함임.
 
 function App() {
-  let [재고, 재고변경] = useState([10, 11, 12]);
+  let [stock, setStock] = useState([10, 11, 12]);
   let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
 
   return (
     <>
-      <div>
-        <StockContext.Provider value={{ 재고, shoes }}>
-          <Detail shoes={shoes} />
-        </StockContext.Provider>
-      </div>
-
+      <StockContext.Provider value={{ stock, shoes }}>
+        <Detail shoes={shoes} />
+      </StockContext.Provider>
       <div
         className="main-bg"
         style={{ backgroundImage: "url(" + bg + ")" }}
       ></div>
 
       <div>
-        
         <Navbar bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
@@ -38,9 +34,8 @@ function App() {
               <Nav.Link href="/pricing">Pricing</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/detail">Detail</Nav.Link>
-              {/* <Nav.Link href="/detail2">Detail2</Nav.Link> */}
-              {/* <Nav.Link href="/detail3">Detail3</Nav.Link>  */}
-              {/* <Nav.Link href="/detail4">Detail4</Nav.Link> */}
+              <Nav.Link href="/detail4">Detail4</Nav.Link>
+
             </Nav>
           </Container>
         </Navbar>
@@ -50,7 +45,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <h3>메인페이지임</h3>
+            <h3>Main page</h3>
             <div className="container">
               <div className="row">
                 {shoes.map((a, i) => { //shoes는 array.
@@ -62,17 +57,20 @@ function App() {
         } />
 
         <Route path="/about" element={<About />} >
-          <Route path="member" element={<div>멤버들</div>} />
-          <Route path="location" element={<div>회사위치</div>} />
+          <Route path="member" element={<div>Members</div>} />
+          <Route path="location" element={<div>Location</div>} />
         </Route>
 
         <Route path="/event" element={<Event />} >
           <Route path="one" element={<div><p>첫 주문시 양배추즙 서비스</p></div>} />
           <Route path="two" element={<div><p>생일기념 쿠폰받기</p></div>} />
         </Route>
-        <Route path="/detail/:id" element={<><div>디테일페이지임</div>
+        <Route path="/detail/:id" element={<><div>Detail page</div>
           <Detail shoes={shoes} /></>} />
-        <Route path="*" element={<div>없는페이지임</div>} />
+        <Route path="/detail4/:id" element={<><div>Detail4 page</div>
+          <Detail4 shoes={shoes} /></>} />
+
+        <Route path="*" element={<div>Page not found</div>} />
       </Routes>
 
       <div className="App">
@@ -87,9 +85,7 @@ function App() {
             .catch(() => {
               console.log('실패함')
             })
-        }}>버튼</button>
-        {/* 누르면 3개 더로드 */}
-
+        }}>Click me</button> {/* 누르면 3개 더로드 */}
       </div>
     </>
   );
@@ -108,7 +104,7 @@ function Card(props) {
 function About() {
   return (
     <div>
-      <h4>about페이지임</h4>
+      <h4>About page</h4>
       <Outlet />
       {/* 여기에 div 보여줌 */}
     </div>
@@ -118,7 +114,7 @@ function About() {
 function Event() {
   return (
     <div>
-      <h4>오늘의 이벤트</h4>
+      <h4>Today's event</h4>
       <Outlet />
       {/* 여기에 div 보여줌 */}
     </div>

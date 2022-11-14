@@ -1,5 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
-import { StockContext } from './../App.js'
+import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap'
 
@@ -9,7 +8,7 @@ function Detail4(props) {
   let [alert, setAlert] = useState(true);
   let [탭, 탭변경] = useState(0);
   let [fade2, setFade2] = useState('');
-  let { 재고 } = useContext(StockContext);
+
   useEffect(() => {
     let a = setTimeout(() => { setAlert(false) }, 2000)
     setFade2('end');
@@ -21,6 +20,7 @@ function Detail4(props) {
   }, [])
 
   return (
+    
     <div className={'container start' + fade2}>
       {
         alert === true ?
@@ -29,7 +29,6 @@ function Detail4(props) {
           </div>
           : null
       }
-      <div>{재고}</div>
       <div className="row">
         <div className="col-md-6">
           <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" alt="shoes1" />
