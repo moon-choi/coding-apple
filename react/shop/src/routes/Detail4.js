@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { StockContext } from './../App.js'
 import { useParams } from "react-router-dom";
 import { Nav } from 'react-bootstrap'
 
@@ -6,9 +7,9 @@ function Detail4(props) {
   let { id } = useParams();
   let item = props.shoes.find(x => x["id"] == id); // === 하면 오류남. 꼭 ==로!
   let [alert, setAlert] = useState(true);
-  let [탭, 탭변경] = useState(0)
-  let [fade2, setFade2] = useState('')
-
+  let [탭, 탭변경] = useState(0);
+  let [fade2, setFade2] = useState('');
+  let { 재고 } = useContext(StockContext);
   useEffect(() => {
     let a = setTimeout(() => { setAlert(false) }, 2000)
     setFade2('end');
@@ -28,7 +29,7 @@ function Detail4(props) {
           </div>
           : null
       }
-
+      <div>{재고}</div>
       <div className="row">
         <div className="col-md-6">
           <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="100%" alt="shoes1" />
@@ -69,7 +70,7 @@ function TabContent(props) {
   }, [props.탭]) //"탭이라는 state가 변할 때 end를 저기 부착해주세요"s
 
   return (
-    <div className={'start ' + fade}> 
+    <div className={'start ' + fade}>
       {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
     </div>)
 
