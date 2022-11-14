@@ -7,17 +7,20 @@ function Detail4(props) {
   let item = props.shoes.find(x => x["id"] == id); // === 하면 오류남. 꼭 ==로!
   let [alert, setAlert] = useState(true);
   let [탭, 탭변경] = useState(0)
+  let [fade2, setFade2] = useState('')
 
   useEffect(() => {
     let a = setTimeout(() => { setAlert(false) }, 2000)
+    setFade2('end');
+
     return () => {
       clearTimeout(a);
+      setFade2('');
     }
   }, [])
 
   return (
-    <div className="container">
-
+    <div className={'container start' + fade2}>
       {
         alert === true ?
           <div className="alert alert-warning">
@@ -60,12 +63,13 @@ function TabContent(props) {
   useEffect(() => {
     setTimeout(() => { setFade('end') }, 100)
     return () => {
-      setFade('')
+      setFade('') // clean up function
+      // fade라는 state를 공백으로 바꾸라고 했으니 useEffect 실행 전엔 'end'가 '' 이걸로 바뀝니다.
     }
-  }, [props.탭])
+  }, [props.탭]) //"탭이라는 state가 변할 때 end를 저기 부착해주세요"s
 
   return (
-    <div className={'start ' + fade}>
+    <div className={'start ' + fade}> 
       {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
     </div>)
 
