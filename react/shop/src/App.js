@@ -51,9 +51,9 @@ function App() {
             <h3>Main page</h3>
             <div className="container">
               <div className="row">
-                {shoes.map((a, i) => { //shoes는 array.
+                {/* {shoes.map((a, i) => { //shoes는 array.
                   return <Card shoe={shoes[i]} index={i} ></Card>
-                })}
+                })} */}
               </div>
             </div>
           </>
