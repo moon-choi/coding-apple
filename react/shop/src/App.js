@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Cart from "./Cart.js";
 import Detail from "./routes/Detail.js";
 import Detail4 from "./routes/Detail4.js";
 import bg from './bg.png'
@@ -35,6 +36,8 @@ function App() {
               <Nav.Link href="/about">About</Nav.Link>
               <Nav.Link href="/detail">Detail</Nav.Link>
               <Nav.Link href="/detail4">Detail4</Nav.Link>
+              <Nav.Link href="/cart">Cart</Nav.Link>
+
 
             </Nav>
           </Container>
@@ -69,6 +72,8 @@ function App() {
           <Detail shoes={shoes} /></>} />
         <Route path="/detail4/:id" element={<><div>Detail4 page</div>
           <Detail4 shoes={shoes} /></>} />
+
+        <Route path="/cart" element={<Cart />} /> 
 
         <Route path="*" element={<div>Page not found</div>} />
       </Routes>
