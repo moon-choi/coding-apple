@@ -1,11 +1,12 @@
-import { Table } from 'react-bootstrap' 
+import { Table } from 'react-bootstrap'
 import { useSelector } from "react-redux"
 
 function Cart() {
+  let a = useSelector((state) => { return state })
+  let b = useSelector((state) => state.user); //advanced version
+  console.log(a) //{"user": "kim"}
+  console.log(b) //kim
 
-  let a = useSelector((state) => state.user);
-  console.log(a)
-    
   return (
     <Table>
       <thead>
