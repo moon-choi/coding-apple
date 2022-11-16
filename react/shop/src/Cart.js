@@ -2,6 +2,7 @@ import { Table } from 'react-bootstrap'
 import { useSelector } from "react-redux"
 
 function Cart() {
+  let state = useSelector((state) => state)
   let a = useSelector((state) => { return state }) //key-value pair
   let b = useSelector((state) => state.user);//just the value
   console.log(a) //{"user": "kim"}
@@ -18,12 +19,16 @@ function Cart() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>안녕</td>
-          <td>안녕</td>
-          <td>안녕</td>
-        </tr>
+        {
+          state.cart.map((a, i) =>
+            <tr key={i}>
+              <td>1</td>
+              <td>{state.cart[i].name}</td>
+              <td>{state.cart[i].count}</td>
+              <td>안녕</td>
+            </tr>
+          )
+        }
       </tbody>
     </Table>
   )
