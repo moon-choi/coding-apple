@@ -3,8 +3,15 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 //state 생성
 let user = createSlice({
   name: 'user',
-  initialState: 'kim'
+  initialState: 'kim',
+  reducers: {
+    changeName(state) {
+      return 'john ' + state
+    }
+  }
 })
+//slice이름.actions 라고 적으면 state 변경함수가 전부 그 자리에 출력됩니다.
+//그걸 변수에 저장했다가 export 하라는 뜻일 뿐임 
 
 let cart = createSlice({
   name: 'cart',
@@ -21,3 +28,5 @@ export default configureStore({
     cart: cart.reducer,
   }
 }) 
+
+export let { changeName } = user.actions 
