@@ -2,8 +2,8 @@ import { Table } from 'react-bootstrap'
 import { useSelector } from "react-redux"
 
 function Cart() {
-  let a = useSelector((state) => { return state })
-  let b = useSelector((state) => state.user); //advanced version
+  let a = useSelector((state) => { return state }) //key-value pair
+  let b = useSelector((state) => state.user);//just the value
   console.log(a) //{"user": "kim"}
   console.log(b) //kim
 
