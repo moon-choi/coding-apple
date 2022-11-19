@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
-import { changeName } from "./store.js"
+import { changeName, increase } from "./store.js"
 
 function Cart() {
   const dispatch = useDispatch()
@@ -14,7 +14,11 @@ function Cart() {
     <>
       <button onClick={() => {
         dispatch(changeName())
-      }}>버튼임</button>
+      }}>Change Name</button>
+      <button onClick={() => {
+        dispatch(increase())
+      }}>Add One</button>
+
       <Table>
         <thead>
           <tr>

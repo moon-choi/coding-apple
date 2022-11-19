@@ -3,10 +3,13 @@ import { configureStore, createSlice } from '@reduxjs/toolkit'
 //state 생성
 let user = createSlice({
   name: 'user',
-  initialState: 'kim',
+  initialState: { name: 'kim', age: 20 },
   reducers: {
     changeName(state) {
       return 'john ' + state
+    },
+    increase(state) {
+      state.age += 1
     }
   }
 })
@@ -27,6 +30,9 @@ let cart = createSlice({
   }
 })
 
+
+//=============================================================
+
 //state 등록 - 모든 컴포넌트가 자유롭게 사용 가능
 export default configureStore({
   reducer: {
@@ -35,5 +41,5 @@ export default configureStore({
   }
 }) 
 
-export let { changeName } = user.actions 
+export let { changeName, increase } = user.actions 
 export let { addItem } = cart.actions
