@@ -1,6 +1,6 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
-import { changeName, increase } from "./../store/userSlice.js"
+import { changeName, increase } from "./store/userSlice"
 
 function Cart() {
   const dispatch = useDispatch()
