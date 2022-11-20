@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
 import { changeName, increase } from "./store/userSlice"
-import { addCount } from './store'
+import { addCount, addItem } from './store/cartSlice'
 
 function Cart() {
   const dispatch = useDispatch()
@@ -39,7 +39,7 @@ function Cart() {
                   {state.cart[i].count}
                   <button onClick={() => {
                     const ID = state.cart[i].id
-                    dispatch(addCount(ID))
+                    dispatch(addCount(ID)) //버튼누르면 이렇게 옆에있던 상품 id를 payload로 전송하라 
                   }}> + </button> 
                 </td>
                 <td>안녕</td>

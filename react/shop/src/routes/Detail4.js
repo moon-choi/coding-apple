@@ -71,8 +71,8 @@ function TabContent(props) {
   return (
     <div className={'start ' + fade}>
       {[<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][props.탭]}
-    </div>)
-
+    </div>
+  )
 }
 // 아니면 function TabContent({탭}){
 // return [<div>내용0</div>, <div>내용1</div>, <div>내용2</div>][탭]
