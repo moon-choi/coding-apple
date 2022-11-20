@@ -16,8 +16,11 @@ let cart = createSlice({
       return state + item3
     },
   addCount(state, action) {
-      state[action.payload].count++
-    }
+    // state[action.payload].count++ //초보레벨
+
+    let i = state.findIndex( x =>  x.id === action.payload)
+    state[i].count++  //상급레벨
+  }
   }
 })
 

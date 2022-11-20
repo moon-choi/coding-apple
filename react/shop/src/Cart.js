@@ -38,7 +38,8 @@ function Cart() {
                 <td>
                   {state.cart[i].count}
                   <button onClick={() => {
-                    dispatch(addCount(i))
+                    const ID = state.cart[i].id
+                    dispatch(addCount(ID))
                   }}> + </button> 
                 </td>
                 <td>안녕</td>
