@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
-import { addItem, addCount } from '../store/cartSlice'
+import { addItem } from '../store/cartSlice'
 import { useDispatch } from "react-redux"
 
 function Detail(props) {
@@ -19,7 +19,7 @@ function Detail(props) {
           <p>{item.content}</p>
           <p>{item.price} won</p>
           <button className="btn btn-danger" onClick={() => {
-            dispatch(addItem({ id: 1, name: 'hola', count: 1 }))
+            dispatch(addItem({ id: item.id, name: item.title, count: 1 }))
           }}>Let's order!</button>
         </div>
       </div>
