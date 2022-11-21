@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
@@ -5,37 +6,20 @@ import { addItem, addCount } from '../store/cartSlice'
 import { useDispatch } from "react-redux"
 
 function Detail(props) {
-  const { SKU } = useParams();
-  console.log('SKU', SKU)
+  let { SKU } = useParams();
   let [tab, setTab] = useState(0);
   let dispatch = useDispatch();
-  let item = props.shoes.find(x => x['id'] == SKU); // === 하면 오류남. 꼭 ==로!
-  
-  console.log('props.shoes', props.shoes)
-  console.log('typeof', typeof item) //object.
-  console.log('item', item)
-
-  // let { stock } = useContext(StockContext) //이 문법은 외우자.
-
-  // return (
-  //   <>
-  //     <div className="col-md-6 mt-4">
-  //       <div>Currently remaining: {stock}</div>
-  //       <button className="btn btn-danger" onClick={addItem}>Order now!</button>
-  //     </div >
-  //   </>
-  // )
-
-
-
+  let item = props.shoes.find(x => x["id"] == SKU); // === 하면 오류남. 꼭 == 로!
 
   return (
     <>
       <div className="row mb-5">
         <div className="col-md-6" >
           <h4 className="pt-5"></h4>
-          {/* <p>{item.content}</p>
-          <p>{item.price}원</p> */}
+          <p>ID: {item.id}</p>
+          <p>{item.title}</p>
+          <p>{item.content}</p>
+          <p>{item.price} won</p>
           <button className="btn btn-danger" onClick={() => {
             dispatch(addItem({ id: 1, name: 'Red Knit', count: 1 }))
           }}>Let's order!</button>

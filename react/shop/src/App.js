@@ -6,20 +6,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Cart from "./Cart.js";
 import Detail from "./routes/Detail.js";
-import Detail4 from "./routes/Detail4.js";
 import bg from './bg.png'
 import axios from 'axios'
 export let StockContext = React.createContext(); //context 는 state 보관함임.
 
 function App() {
-  let [stock, setStock] = useState([10, 11, 12]);
+  // let [stock, setStock] = useState([10, 11, 12]);
   let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
 
   return (
     <>
-      <StockContext.Provider value={{ stock, shoes }}>
+      {/* <StockContext.Provider value={{ stock, shoes }}>
         <Detail shoes={shoes} />
-      </StockContext.Provider>
+      </StockContext.Provider> */}
       <div
         className="main-bg"
         style={{ backgroundImage: "url(" + bg + ")" }}
@@ -70,9 +69,6 @@ function App() {
         </Route>
         <Route path="/detail/:SKU" element={<><div>Detail page</div>
           <Detail shoes={shoes} /></>} />
-        <Route path="/detail4/:id" element={<><div>Detail4 page</div>
-          <Detail4 shoes={shoes} /></>} />
-
         <Route path="/cart" element={<Cart />} /> 
 
         <Route path="*" element={<div>Page not found</div>} />

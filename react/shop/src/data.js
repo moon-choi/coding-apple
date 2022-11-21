@@ -1,4 +1,4 @@
-let data = [
+let data = [ //array of objects.
   {
     id: 0,
     title: "White and Black",
