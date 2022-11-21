@@ -15,13 +15,11 @@ function Detail(props) {
     <>
       <div className="row mb-5">
         <div className="col-md-6" >
-          <h4 className="pt-5"></h4>
-          <p>ID: {item.id}</p>
-          <p>{item.title}</p>
+          <h4 className="pt-5">[{item.id}] {item.title}</h4>
           <p>{item.content}</p>
           <p>{item.price} won</p>
           <button className="btn btn-danger" onClick={() => {
-            dispatch(addItem({ id: 1, name: 'Red Knit', count: 1 }))
+            dispatch(addItem({ id: 1, name: 'hola', count: 1 }))
           }}>Let's order!</button>
         </div>
       </div>
