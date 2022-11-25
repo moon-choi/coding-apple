@@ -9,16 +9,20 @@ let cart = createSlice({
   reducers: {
     addItem(state, action) {
       // const item3 = { id: 3, name: 'Red and Blue', count: 1 }
-      return state.push(action.payload)
+      state.push(action.payload)
     },
     addCount(state, action) {
       // state[action.payload].count++ //초보레벨
 
       let i = state.findIndex(x => x.id === action.payload)
       state[i].count++  //상급레벨
-    }
+    },
+    subtractCount(state, action) {
+      let i = state.findIndex(x => x.id === action.payload)
+      state[i].count--
+    },
   }
 })
 
-export let { addItem, addCount } = cart.actions
+export let { addItem, addCount, subtractCount } = cart.actions
 export default cart

@@ -9,8 +9,8 @@ let user = createSlice({
     },
     increase(state, action) {
       state.age += action.payload // parameter 에 넣은 데이터
-      // - action.type 하면 state변경함수 이름이 나오고
-      // - action.payload 하면 파라미터가 나옵니다. 
+      // action.type 하면 state변경함수 이름이 나오고
+      // action.payload 하면 파라미터가 나옵니다. 
     },
   }
 })
