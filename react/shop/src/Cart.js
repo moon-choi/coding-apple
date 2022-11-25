@@ -24,9 +24,9 @@ function Cart() {
         <thead>
           <tr>
             <th>#</th>
-            <th>상품명</th>
-            <th>수량</th>
-            <th>변경하기</th>
+            <th>Item</th>
+            <th>Number</th>
+            <th>Detail</th>
           </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@ function Cart() {
                   }}> + </button> 
 
                 </td>
-                <td>안녕</td>
+                <td>awesome shoes</td>
               </tr>
             )
           }
