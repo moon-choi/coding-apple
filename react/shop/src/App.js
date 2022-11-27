@@ -16,7 +16,8 @@ function App() {
  
   useEffect(() => {
     localStorage.setItem('watched', JSON.stringify([]))
-  }, []) 
+  }, []) //쿠키 세팅
+
   return (
     <>
       {/* <StockContext.Provider value={{ stock, shoes }}>

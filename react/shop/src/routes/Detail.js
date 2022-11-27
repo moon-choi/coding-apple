@@ -11,6 +11,14 @@ function Detail(props) {
   let dispatch = useDispatch();
   let item = props.shoes.find(x => x["id"] == SKU); // === 하면 오류남. 꼭 == 로!
 
+  useEffect(() => {
+    let watched = JSON.parse(localStorage.getItem('watched'));
+    //App에서 세팅한 쿠키를 Detail 페이지 접속할 때 읽어들이기
+    watched.push(item.id);
+    watched = Array.from(new Set(watched));
+    localStorage.getItem('watched', JSON.stringify([watched])) 
+  }, []) 
+
   return (
     <>
       <div className="row mb-5">
