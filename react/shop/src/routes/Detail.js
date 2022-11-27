@@ -64,5 +64,4 @@ function TabContent(props) {
   )
 }
 
-
 export default Detail

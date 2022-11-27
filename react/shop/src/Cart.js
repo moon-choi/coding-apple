@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
 import { changeName, increase } from "./store/userSlice"
-import { addCount, subtractCount, addItem } from './store/cartSlice'
+import { addCount, subtractCount } from './store/cartSlice'
 
 function Cart() {
   const dispatch = useDispatch()
@@ -53,7 +53,6 @@ function Cart() {
           }
         </tbody>
       </Table>
-
     </>
   )
 }
