@@ -1,6 +1,6 @@
 import data from './data.js';
 import { Routes, Route, Outlet } from 'react-router-dom'
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
@@ -13,7 +13,10 @@ export let StockContext = React.createContext(); //context 는 state 보관함�
 function App() {
   // let [stock, setStock] = useState([10, 11, 12]);
   let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
-
+ 
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, []) 
   return (
     <>
       {/* <StockContext.Provider value={{ stock, shoes }}>
