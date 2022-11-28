@@ -26,7 +26,13 @@ function Detail(props) {
     pulled = new Set(pulled); //Set(1) {2}
           console.log('5. new Set: ', pulled)
     pulled = Array.from(pulled); //[2]
-          console.log('6. Array.from: ', pulled)
+    console.log('6. Array.from: ', pulled)
+    
+  // TODO: 
+  // 1. Detail 메인에 각 제품 이미지 뜨는 것
+  // 2. 코드 있을 될 때만 컴파일 다시 돼면서 콘솔로그랑 로컬스토리지 업데이트 됌.
+  // 3. deatili/2 처럼 다른 모델로 갈 때는 업데이트 안돼고 현재 보는 상품만 뜸.
+    
   }, []) 
 
   return (
