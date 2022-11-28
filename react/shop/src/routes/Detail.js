@@ -7,19 +7,26 @@ import { useDispatch } from "react-redux"
 
 function Detail(props) {
   let { SKU } = useParams();
+  let item = props.shoes.find(x => x.id == SKU); // === 하면 오류남. 꼭 == 로!
+  // console.log('item.id', item.id)
   let [tab, setTab] = useState(0);
   let dispatch = useDispatch();
-  let item = props.shoes.find(x => x["id"] == SKU); // === 하면 오류남. 꼭 == 로!
 
   useEffect(() => {
-    let watched = JSON.parse(localStorage.getItem('watched'));
-    //App에서 세팅한 쿠키를 Detail 페이지 접속할 때 읽어들이기
-    watched.push(item.id);
-
-    //Set으로 바꿨다가 다시 array로 만들기: if 쓰기 귀찮을 때. Set 은 중복을 알아서 제거해주는 array.
-    let set = new Set(watched); //Set(1) {2}
-    let arr = Array.from(set); //[2]
-    localStorage.getItem('watched', JSON.stringify([arr])) 
+    //App.js에서 셋한 쿠키를 Detail 페이지 접속할 때 겟하기
+    let pulled = localStorage.getItem('watched'); //로컬 스토리지에서 꺼낸거
+          console.log('1. pulled: ', pulled)
+    pulled = JSON.parse(pulled)
+          console.log('2. parsed: ', pulled)
+    pulled.push(item.id);
+          console.log('3. pushed: ', pulled)
+    localStorage.setItem('watched: ', JSON.stringify(pulled))
+          console.log('4. stringified: ', pulled)
+   //Set으로 바꿨다가 다시 array로 만들기: if 쓰기 귀찮을 때. Set 은 중복을 알아서  제거해주는 array.
+    pulled = new Set(pulled); //Set(1) {2}
+          console.log('5. new Set: ', pulled)
+    pulled = Array.from(pulled); //[2]
+          console.log('6. Array.from: ', pulled)
   }, []) 
 
   return (

@@ -11,13 +11,13 @@ import axios from 'axios'
 export let StockContext = React.createContext(); //context 는 state 보관함임.
 
 function App() {
-  // let [stock, setStock] = useState([10, 11, 12]);
-  let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
- 
   useEffect(() => {
     localStorage.setItem('watched', JSON.stringify([]))
   }, []) //쿠키 세팅
 
+  // let [stock, setStock] = useState([10, 11, 12]);
+  let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
+ 
   return (
     <>
       {/* <StockContext.Provider value={{ stock, shoes }}>
