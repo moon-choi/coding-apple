@@ -8,6 +8,8 @@ import Cart from "./Cart.js";
 import Detail from "./routes/Detail.js";
 import bg from './bg.png'
 import axios from 'axios'
+import { useQuery } from '@tanstack/react-query'
+
 export let StockContext = React.createContext(); //context 는 state 보관함임.
 
 function App() {
@@ -17,12 +19,21 @@ function App() {
 
   // let [stock, setStock] = useState([10, 11, 12]);
   let [shoes, setShoes] = useState(data); //initial: shoes - data,json array of objects.
- 
+  let result = useQuery('작명', () =>
+    axios.get('https://codingapple1.github.io/userdata.json')
+      .then((a) => { return a.data })
+  )
   return (
     <>
       {/* <StockContext.Provider value={{ stock, shoes }}>
         <Detail shoes={shoes} />
       </StockContext.Provider> */}
+      <div>
+        <span>ajax request: </span> 
+        {result.isLoading && 'Loading..'}
+        {result.error && 'Error occured'}
+        {result.data && result.data.name}
+      </div>
       <div
         className="main-bg"
         style={{ backgroundImage: "url(" + bg + ")" }}
