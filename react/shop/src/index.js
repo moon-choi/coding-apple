@@ -6,16 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from './store/store.js'
+import { QueryClient, QueryClientProvider } from "react-query"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const queryClient = new QueryClient()
+
 root.render(
-  // <React.StrictMode> //useEffect 2번 출력 방지
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-  // </React.StrictMode>
+  <QueryClientProvider client={queryClient}>
+    {/* <React.StrictMode> //useEffect 2번 출력 방지 */}
+      <Provider store={store}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Provider>
+    {/* </React.StrictMode> */}
+  </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
