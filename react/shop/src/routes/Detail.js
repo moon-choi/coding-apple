@@ -15,8 +15,11 @@ function Detail(props) {
     let watched = JSON.parse(localStorage.getItem('watched'));
     //App에서 세팅한 쿠키를 Detail 페이지 접속할 때 읽어들이기
     watched.push(item.id);
-    watched = Array.from(new Set(watched));
-    localStorage.getItem('watched', JSON.stringify([watched])) 
+
+    //Set으로 바꿨다가 다시 array로 만들기: if 쓰기 귀찮을 때. Set 은 중복을 알아서 제거해주는 array.
+    let set = new Set(watched); //Set(1) {2}
+    let arr = Array.from(set); //[2]
+    localStorage.getItem('watched', JSON.stringify([arr])) 
   }, []) 
 
   return (
