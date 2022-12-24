@@ -38,3 +38,22 @@
   font-size: 16px;
   text-decoration: none;
 }
+
+.explain-container>div {
+  float : left;
+  width : 25%;
+}
+
+@media screen and (max-width : 992px) {
+  .explain-container>div {
+    float : left;
+    width : 50%;
+  }
+}
+
+@media screen and (max-width : 768px) {
+  .explain-container>div {
+    float : none;
+    width : 100%;
+  }
+}
