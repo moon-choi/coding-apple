@@ -1,8 +1,9 @@
 .container {
   width: 800px;
   margin: auto;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
-} 
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 .blog-content {
   width: 80%;
   height: 200px;
@@ -39,21 +40,66 @@
   text-decoration: none;
 }
 
-.explain-container>div {
-  float : left;
-  width : 25%;
+.explain-container > div {
+  float: left;
+  width: 25%;
 }
 
-@media screen and (max-width : 992px) {
-  .explain-container>div {
-    float : left;
-    width : 50%;
+@media screen and (max-width: 992px) {
+  .explain-container > div {
+    float: left;
+    width: 50%;
   }
 }
 
-@media screen and (max-width : 768px) {
-  .explain-container>div {
-    float : none;
-    width : 100%;
+@media screen and (max-width: 768px) {
+  .explain-container > div {
+    float: none;
+    width: 100%;
   }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.overlay:hover {
+  opacity: 0.5;
+}
+
+.overflow {
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
+  background: pink; 
+  opacity: 0;
+  transition: all 1s;
+  transform: translateY(100%);}
+
+.overflow:hover {
+  opacity: 0.7;
+}
+
+.shop-bg {
+  background: #eee;
+  padding: 20px;
+}
+
+.shop-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+
+.shop-item {
+  width: 33%;
+  padding: 10px;
+}
+
+.shop-item img {
+  width: 100%;
 }
