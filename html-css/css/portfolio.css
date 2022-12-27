@@ -1,0 +1,89 @@
+.container {
+  margin: 0 auto;
+  color: white;
+  font-family: "Hanken Grotesk", sans-serif;
+  text-align: center;
+}
+
+img {
+  display: block;
+  position: relative;
+}
+
+.hero-banner {
+  text-align: left;
+  background-image: linear-gradient(blue, skyblue);
+  margin: 0 auto;
+  display: block;
+  display: flex;
+  padding: 3rem 5rem;
+  padding-bottom: 0px;
+}
+
+.hero {
+  width: 100%;
+}
+
+.hero img {
+  float: right;
+}
+
+.show-portfolio {
+  color: black;
+}
+
+.cta-button {
+  width: 100px;
+  height: 30px;
+  color: white;
+  background: black;
+  opacity: 0.6;
+  border-radius: 5px;
+}
+.what-we-offer {
+}
+
+.what-we-can-do {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.what-we-can-do img {
+  width: 500px;
+  opacity: 0.5;
+}
+
+.row {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.tile {
+  position: relative;
+  background: black;
+}
+
+.tile-text {
+  text-align: left;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.footer {
+  font-size: 1rem;
+  display: flex;
+  justify-contnet: center;
+  width: 15%;
+  margin: 3rem auto;
+}
+
+.fa-brands {
+  margin: auto;
+  padding: 1rem;
+  border-radius: 50%;
+  background: lightblue;
+  color: white;
+  display: inline-block;
+}
